@@ -110,7 +110,10 @@ jobs:
             grep -v 'gem "nice_partials"' Gemfile > Gemfile.tmp
             mv Gemfile.tmp Gemfile
             echo 'gem "nice_partials", path: "../.."' >> Gemfile
-      - run: bundle lock --update=nice_partials
+            grep -v 'gem "bullet_train-super_scaffolding"' Gemfile > Gemfile.tmp
+            mv Gemfile.tmp Gemfile
+            echo 'gem "bullet_train-super_scaffolding", github: "bullet-train-co/bullet_train-core", branch: "fix-tangible-thing-buttons-shorthand-i18n"' >> Gemfile
+      - run: bundle lock
 
       - ruby/install-deps:
           clean-bundle: true
